@@ -7,7 +7,8 @@ import { loadBlogPost } from "@/helpers/file-helpers";
 import { MDXRemote } from "next-mdx-remote/rsc";
 
 async function BlogPost({ params }) {
-	const { frontmatter, content } = await loadBlogPost(params.postSlug);
+	const { postSlug } = await params;
+	const { frontmatter, content } = await loadBlogPost(postSlug);
 
 	return (
 		<article className={styles.wrapper}>
