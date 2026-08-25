@@ -1,4 +1,5 @@
 import React from "react";
+import dynamic from "next/dynamic";
 
 import BlogHero from "@/components/BlogHero";
 
@@ -22,6 +23,13 @@ async function BlogPost({ params }) {
 	const { postSlug } = await params;
 	const { frontmatter, content } = await loadBlogPost(postSlug);
 
+	const components = frontmatter.components
+		.split(",")
+		.map((component) => [
+			component,
+			dynamic(() => import(`@/components/${component}`)),
+		]);
+
 	return (
 		<article className={styles.wrapper}>
 			<BlogHero
@@ -33,6 +41,7 @@ async function BlogPost({ params }) {
 					source={content}
 					components={{
 						pre: CodeSnippet,
+						...Object.fromEntries(components),
 					}}
 				/>
 			</div>
