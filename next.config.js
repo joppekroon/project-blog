@@ -1,5 +1,5 @@
 module.exports = {
-  outputFileTracingIncludes: {
-    '/*': ['./content/**/*'],
-  },
+	outputFileTracingIncludes: {
+		'/*': ['./content/**/*'],
+	},
 };
