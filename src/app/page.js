@@ -18,7 +18,7 @@ async function Home() {
 					slug={slug}
 					title={title}
 					abstract={abstract}
-					publishedOn={new Date(publishedOn)}
+					publishedOn={publishedOn}
 				/>
 			))}
 		</div>
