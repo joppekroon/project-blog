@@ -1,5 +1,4 @@
 import React from "react";
-import dynamic from "next/dynamic";
 
 import BlogHero from "@/components/BlogHero";
 
@@ -7,7 +6,8 @@ import styles from "./postSlug.module.css";
 import { loadBlogPost } from "@/helpers/file-helpers";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { BLOG_TITLE } from "@/constants";
-import CodeSnippet from "@/components/CodeSnippet";
+
+import COMPONENT_MAP from "@/helpers/mdx-components";
 
 export async function generateMetadata({ params }) {
 	const { postSlug } = await params;
@@ -23,13 +23,6 @@ async function BlogPost({ params }) {
 	const { postSlug } = await params;
 	const { frontmatter, content } = await loadBlogPost(postSlug);
 
-	const components = frontmatter.components
-		.split(",")
-		.map((component) => [
-			component,
-			dynamic(() => import(`@/components/${component}`)),
-		]);
-
 	return (
 		<article className={styles.wrapper}>
 			<BlogHero
@@ -37,13 +30,7 @@ async function BlogPost({ params }) {
 				publishedOn={frontmatter.publishedOn}
 			/>
 			<div className={styles.page}>
-				<MDXRemote
-					source={content}
-					components={{
-						pre: CodeSnippet,
-						...Object.fromEntries(components),
-					}}
-				/>
+				<MDXRemote source={content} components={COMPONENT_MAP} />
 			</div>
 		</article>
 	);
