@@ -23,10 +23,10 @@ function LightDarkToggle({ className, initialTheme }) {
 		});
 
 		const root = document.documentElement;
-		const colors = nextTheme === 'dark' ? DARK_TOKENS : LIGHT_TOKENS;
+		const themeTokens = nextTheme === 'dark' ? DARK_TOKENS : LIGHT_TOKENS;
 
 		root.setAttribute('data-color-theme', nextTheme);
-		Object.entries(colors).forEach(([key, value]) => {
+		Object.entries(themeTokens).forEach(([key, value]) => {
 			root.style.setProperty(key, value);
 		});
 	}
