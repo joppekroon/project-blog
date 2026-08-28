@@ -8,7 +8,7 @@ import LightDarkToggle from '@/components/LightDarkToggle';
 
 import styles from './Header.module.css';
 
-function Header({ theme, className, ...delegated }) {
+function Header({ initialTheme, className, ...delegated }) {
 	return (
 		<header className={clsx(styles.wrapper, className)} {...delegated}>
 			<Logo />
@@ -24,7 +24,10 @@ function Header({ theme, className, ...delegated }) {
 					/>
 					<VisuallyHidden>View RSS feed</VisuallyHidden>
 				</button>
-				<LightDarkToggle className={styles.action} initialTheme={theme} />
+				<LightDarkToggle
+					className={styles.action}
+					initialTheme={initialTheme}
+				/>
 			</div>
 		</header>
 	);
