@@ -5,7 +5,11 @@ import { Sun, Moon } from 'react-feather';
 
 import VisuallyHidden from '@/components/VisuallyHidden';
 
-import { DARK_TOKENS, LIGHT_TOKENS } from '@/constants';
+import {
+	COLOR_THEME_COOKIE_NAME,
+	DARK_TOKENS,
+	LIGHT_TOKENS,
+} from '@/constants';
 
 function LightDarkToggle({ className, initialTheme }) {
 	const [theme, setTheme] = React.useState(initialTheme);
@@ -14,7 +18,7 @@ function LightDarkToggle({ className, initialTheme }) {
 		const nextTheme = theme === 'dark' ? 'light' : 'dark';
 		setTheme(nextTheme);
 
-		Cookie.set('color-theme', nextTheme, {
+		Cookie.set(COLOR_THEME_COOKIE_NAME, nextTheme, {
 			expires: 1000,
 		});
 
