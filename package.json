@@ -23,7 +23,8 @@
 		"next-mdx-remote": "5",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0",
-		"react-feather": "2.0.10"
+		"react-feather": "2.0.10",
+		"rss": "^1.2.2"
 	},
 	"allowScripts": {
 		"sharp@0.33.5": true
