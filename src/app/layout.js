@@ -8,6 +8,7 @@ import RespectMotionPreferences from '@/components/RespectMotionPreferences';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import './styles.css';
+import { cookies } from 'next/headers';
 
 const mainFont = Work_Sans({
 	subsets: ['latin'],
@@ -22,9 +23,9 @@ const monoFont = Spline_Sans_Mono({
 	variable: '--font-family-mono',
 });
 
-function RootLayout({ children }) {
-	// TODO: Dynamic theme depending on user preference
-	const theme = 'light';
+async function RootLayout({ children }) {
+	const savedTheme = (await cookies()).get('color-theme');
+	const theme = savedTheme?.value || 'light';
 
 	return (
 		<RespectMotionPreferences>
