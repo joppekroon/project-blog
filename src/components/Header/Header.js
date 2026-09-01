@@ -5,6 +5,7 @@ import { Rss } from 'react-feather';
 import Logo from '@/components/Logo';
 import VisuallyHidden from '@/components/VisuallyHidden';
 import LightDarkToggle from '@/components/LightDarkToggle';
+import SearchAction from '../SearchAction';
 
 import styles from './Header.module.css';
 
@@ -14,6 +15,7 @@ function Header({ initialTheme, className, ...delegated }) {
 			<Logo />
 
 			<div className={styles.actions}>
+				<SearchAction className={styles.action} />
 				<a href="/rss.xml" className={styles.action}>
 					<Rss
 						size="1.5rem"

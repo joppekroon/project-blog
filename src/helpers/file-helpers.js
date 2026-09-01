@@ -22,6 +22,27 @@ export async function getBlogPostList() {
 	return blogPosts.sort((p1, p2) => (p1.publishedOn < p2.publishedOn ? 1 : -1));
 }
 
+export async function getFilteredBlogPostList(search) {
+	const fileNames = await readDirectory('/content');
+
+	const blogPosts = [];
+
+	for (let fileName of fileNames) {
+		const rawContent = await readFile(`/content/${fileName}`);
+
+		const { data: frontmatter, content } = matter(rawContent);
+
+		if (content.includes(search)) {
+			blogPosts.push({
+				slug: fileName.replace('.mdx', ''),
+				...frontmatter,
+			});
+		}
+	}
+
+	return blogPosts.sort((p1, p2) => (p1.publishedOn < p2.publishedOn ? 1 : -1));
+}
+
 export const loadBlogPost = React.cache(async (slug) => {
 	const rawContent = await readFile(`/content/${slug}.mdx`);
 
