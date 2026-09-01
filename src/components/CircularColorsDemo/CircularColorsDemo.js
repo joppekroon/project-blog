@@ -29,7 +29,6 @@ function CircularColorsDemo() {
 			}, 1000);
 
 			return () => {
-				console.log('clearing');
 				clearInterval(intervalId);
 			};
 		}
