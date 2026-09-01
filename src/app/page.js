@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react';
 
-import BlogSummaryCard from "@/components/BlogSummaryCard";
+import BlogSummaryCard from '@/components/BlogSummaryCard';
 
-import styles from "./homepage.module.css";
-import { getBlogPostList } from "@/helpers/file-helpers";
-import { BLOG_TITLE } from "@/constants";
+import styles from './homepage.module.css';
+import { getBlogPostList } from '@/helpers/file-helpers';
+import { BLOG_TITLE, BLOG_DESCRIPTION } from '@/constants';
 
 export const metadata = {
 	title: BLOG_TITLE,
-	description: "A wonderful blog about JavaScript",
+	description: BLOG_DESCRIPTION,
 };
 
 async function Home() {

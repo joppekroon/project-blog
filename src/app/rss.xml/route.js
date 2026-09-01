@@ -1,10 +1,11 @@
-import { BLOG_TITLE } from '@/constants';
+import { BLOG_TITLE, BLOG_DESCRIPTION } from '@/constants';
 
 import { getBlogPostList } from '@/helpers/file-helpers';
 import RSS from 'rss';
 
 const FEED_OPTIONS = {
 	title: BLOG_TITLE,
+	description: BLOG_DESCRIPTION,
 	feed_url: 'http://localhost:3000/rss.xml',
 	site_url: 'http://localhost:3000/',
 };
